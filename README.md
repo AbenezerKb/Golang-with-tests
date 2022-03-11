@@ -1,3 +1,3 @@
-# Golang-with-test
+# Golang-with-tests
 ## Golang topics implementaion
 ### - [interface](interface.go)
