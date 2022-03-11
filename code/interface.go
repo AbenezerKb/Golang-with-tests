@@ -1,30 +1,37 @@
-package main
+package code
 
-import "fmt"
+import (
+	"math"
+	
+)
 
-type AnimalSound interface {
-	shout() string
+type Shape interface {
+	parameter() float64
 }
 
-type Dog struct {
+type Circle struct {
+	raduis float64
 }
 
-type Lion struct {
+type Rectangle struct {
+	height float64
+	width  float64
 }
 
-func (d Dog) shout() string {
-	return "Dogs Bark"
+func (c Circle) parameter() float64 {
+	return 2 * math.Pi * c.raduis
 }
 
-func (l Lion) shout() string {
-	return "Lions roar"
+func (r Rectangle) parameter() float64 {
+	return r.width + r.height
 }
 
-func main() {
-	animals := []AnimalSound{Dog{}, Lion{}}
 
-	for _, animal := range animals {
-		fmt.Println(animal.shout())
-	}
+// func main() {
+// 	animals := []AnimalSound{Dog{}, Lion{}}
 
-}
+// 	for _, animal := range animals {
+// 		fmt.Println(animal.shout())
+// 	}
+
+// }
