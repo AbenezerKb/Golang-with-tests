@@ -7,3 +7,4 @@
 ### - [pointers](code/pointers)
 ### - [interface](code/interface)
 ### - [iterations](code/iterations)
+### - [map](code/map)
