@@ -1,19 +1,27 @@
 package code
 
-import "time"
-
 type Websitechecker func(string) bool
+
+type results struct {
+	s string
+	b bool
+}
 
 func checkwebsites(ws Websitechecker, urls []string) map[string]bool {
 	website := make(map[string]bool)
+	ch := make(chan results)
 
 	for _, v := range urls {
 		go func(s string) {
-			website[s] = ws(s)
+			ch <- results{s, ws(s)}
 		}(v)
 	}
 
-	time.Sleep(3 * time.Second)
+	for i := 0; i < len(urls); i++ {
+		c := <-ch
+		website[c.s] = c.b
+
+	}
 
 	return website
 }
